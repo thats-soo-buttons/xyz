@@ -1,0 +1,54 @@
+.xyzthians-transition-veil {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+  transition: background 0.7s cubic-bezier(.4,0,.2,1);
+}
+
+.xyzthians-letter {
+  font-size: 18vw;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: 0.1em;
+  text-align: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-shadow: 0 0 32px rgba(0,0,0,0.5), 0 0 8px rgba(0,0,0,0.2);
+  user-select: none;
+}
+
+.xyzthians-letter-text {
+  font-size: 2vw;
+  font-weight: 400;
+  margin-top: 2vw;
+  max-width: 60vw;
+  text-align: center;
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.3));
+}
+
+.metallic {
+  background: linear-gradient(90deg, #e6e8fa 0%, #b87333 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  /* text-fill-color: transparent; */
+  text-shadow: 0 0 24px #b87333, 0 0 8px #e6e8fa;
+}
+
+.neon {
+  text-shadow: 0 0 24px #39ff14, 0 0 8px #ff00cc, 0 0 2px #fff;
+}
+
+.blacklight {
+  text-shadow: 0 0 32px #baffff, 0 0 16px #fff, 0 0 8px #0ff, 0 0 2px #fff;
+  filter: brightness(1.2) contrast(1.2) saturate(1.5);
+}
