@@ -3,25 +3,7 @@ import { XYZTHIAN_LORE } from './xyzthianLore';
 import './LoreCircles.css';
 import OldBookDictionary from './OldBookDictionary';
 
-function ShopButton() {
-  return (
-    <a
-      href="https://ko-fi.com/your-shop" // TODO: Replace with your actual Ko-fi shop URL
-      target="_blank"
-      rel="noopener noreferrer"
-      className="lore-shop-btn"
-      title="Visit the Shop"
-      style={{ display: 'inline-block', marginLeft: 16, verticalAlign: 'middle' }}
-    >
-      <svg width="56" height="56" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="19" cy="19" r="18" stroke="#ffe066" strokeWidth="2" fill="#fff8e1" />
-        <path d="M12 26h14l-1.5-10h-11z" fill="#ffe066" stroke="#b87333" strokeWidth="1.5" />
-        <rect x="15.5" y="14" width="7" height="5" rx="2" fill="#fff" stroke="#b87333" strokeWidth="1" />
-        <circle cx="19" cy="21" r="1.5" fill="#b87333" />
-      </svg>
-    </a>
-  );
-}
+// ShopButton removed
 
 const CIRCLES = [
   { key: 'X', color: '#fff', border: '#bbb' },
@@ -79,7 +61,6 @@ export default function LoreCircles() {
       )}
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 0, marginBottom: 16 }}>
         <OldBookDictionary />
-        <ShopButton />
       </div>
       <div className="lore-circles-footer">
         <button
