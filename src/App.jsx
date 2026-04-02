@@ -2,11 +2,13 @@
 import { useEffect, useState } from 'react';
 import './App.css';
 import XyzthiansTransition from './XyzthiansTransition';
+import LoreCircles from './LoreCircles';
 
 function App() {
   const [isMobile, setIsMobile] = useState(false);
   const [typedText, setTypedText] = useState('');
   const [showTransition, setShowTransition] = useState(false);
+  const [showLorebook, setShowLorebook] = useState(false);
   const fullText = `Energy cannot be created or destroyed...`;
 
   useEffect(() => {
@@ -27,7 +29,7 @@ function App() {
       if (i <= fullText.length) {
         setTypedText(fullText.slice(0, i));
         i++;
-        setTimeout(type, fullText[i - 2] === '\n' ? 1200 : 250);
+        setTimeout(type, fullText[i - 2] === '\n' ? 1200 : 200);
       } else {
         setTimeout(() => setShowTransition(true), 1000);
       }
@@ -35,6 +37,9 @@ function App() {
     type();
     // eslint-disable-next-line
   }, [isMobile]);
+
+  // After the intro animation, show the LivingLorebook menu instead of the old signpost/menu
+  // No timer needed; Lorebook is shown when XyzthiansTransition calls onComplete
 
   return (
     <>
@@ -58,27 +63,24 @@ function App() {
         }}>
           <div style={{ maxWidth: 400 }}>
             <span style={{ fontFamily: 'serif', fontWeight: 600 }}>
-              The Veil cannot be pierced on small screens.<br />
-              Seek a larger window to glimpse the truth.
+              Sorry, this experience is best viewed on desktop.
             </span>
           </div>
         </div>
       )}
-      {!isMobile && !showTransition && (
-        <div className="xyz-veil-bg">
-          <div className="xyz-clouds"></div>
-          <div className="xyz-veil-quote">
-            {typedText}
-            {typedText.length === fullText.length ? (
-              <span className="xyz-cursor">|</span>
-            ) : (
-              <span style={{marginLeft: 2}}>|</span>
-            )}
-          </div>
+      {!isMobile && !showTransition && !showLorebook && (
+        <div className="xyz-veil-quote">
+          <span>{typedText}</span>
         </div>
       )}
-      {!isMobile && showTransition && (
-        <XyzthiansTransition onComplete={() => setShowTransition(false)} />
+      {!isMobile && showTransition && !showLorebook && (
+        <XyzthiansTransition onComplete={() => {
+          setShowLorebook(true);
+          setShowTransition(false);
+        }} />
+      )}
+      {!isMobile && showLorebook && (
+        <LoreCircles />
       )}
     </>
   );
